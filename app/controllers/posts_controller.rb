@@ -3,7 +3,6 @@ class PostsController < ApplicationController
     @posts = Post.all.order(id: "DESC")
   end
 
-
   def create
     Post.create(content: params[:content])
     redirect_to action: :index
@@ -16,9 +15,8 @@ class PostsController < ApplicationController
     else
       post.update(checked: true)
     end
-
+    
     item = Post.find(params[:id])
     render json: { post: item }
   end
-
 end
